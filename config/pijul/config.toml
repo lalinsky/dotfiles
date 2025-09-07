@@ -1,0 +1,9 @@
+colors = "always"
+pager = "always"
+unrecord_changes = 1
+
+[author]
+name = "lukas"
+full_name = "Lukas Lalinsky"
+email = "lalinsky@gmail.com"
+key_path = "/home/lukas/.ssh/id_ed25519.pub"
