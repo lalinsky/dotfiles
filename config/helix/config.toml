@@ -23,14 +23,12 @@ V = ["select_mode", "extend_to_line_bounds"]
 
 # Make j and k behave as they do Vim when soft-wrap is enabled
 up = "move_line_up"
-k = "move_line_up"
 down = "move_line_down"
-j = "move_line_down"
 
-C-up = ["move_line_up"]
-C-down = ["move_line_down"]
-C-right = ["move_next_word_start", "move_char_right", "collapse_selection"]
-C-left = ["move_prev_word_start", "collapse_selection"]
+C-right = ["move_next_word_start"]
+C-left = ["move_prev_word_start"]
+C-up = "goto_prev_paragraph"
+C-down = "goto_next_paragraph"
 
 # Search for word under cursor
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
@@ -39,9 +37,22 @@ C-left = ["move_prev_word_start", "collapse_selection"]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "keep_primary_selection"]
 
+# Beginning/end of line
+"^" = "goto_line_start"
+"$" = "goto_line_end"
+
+# Vim-like C and D commands
+C = ["extend_to_line_end", "change_selection"]
+D = ["extend_to_line_end", "delete_selection"]
+
+# Alternative binding for native Helix C functionality (copy selection to next line)
+C-c = "copy_selection_on_next_line"
+
 [keys.insert]
 C-left = "move_prev_word_start"
 C-right = "move_next_word_start"
+C-up = "goto_prev_paragraph"
+C-down = "goto_next_paragraph"
 
 [keys.select]
 # Muscle memory
@@ -49,10 +60,17 @@ C-right = "move_next_word_start"
 "}" = ["extend_to_line_bounds", "goto_next_paragraph", "collapse_selection"]
 
 # Make selecting lines in visual mode behave sensibly
-up = ["extend_line_up", "extend_to_line_bounds"]
-down = ["extend_line_down", "extend_to_line_bounds"]
-k = ["extend_line_up", "extend_to_line_bounds"]
-j = ["extend_line_down", "extend_to_line_bounds"]
+up = ["extend_line_up"]
+down = ["extend_line_down"]
+
+C-left = "extend_prev_word_start"
+C-right = "extend_next_word_start"
+C-up = ["extend_to_line_bounds", "goto_prev_paragraph"]
+C-down = ["extend_to_line_bounds", "goto_next_paragraph"]
 
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
+
+# Beginning/end of line
+"^" = "extend_to_line_start"
+"$" = "extend_to_line_end"
