@@ -1,6 +1,7 @@
 theme = "ayu_mirage"
 
 [editor]
+cursorline = true
 color-modes = true
 auto-pairs = true
 
